@@ -13,16 +13,10 @@ def create_app():
         app.db = client.microblog
         if request.method == "POST":
             entry_content = request.form.get("content")
-            formatted_date = datetime.datetime.today().strftime("%Y-%m-%d")
+            formatted_date = datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
             app.db.entries.insert_one({"content": entry_content, "date": formatted_date})
         
-        entries_with_date = [
-            (
-                entry["content"],
-                entry["date"],
-                datetime.datetime.strptime(entry["date"], "%Y-%m-%d").strftime("%b %d")
-            )
-            for entry in app.db.entries.find({})
-        ]
-        return render_template("home.html", entries = entries_with_date)
+        entries_with_date = [(entry["content"], entry["date"]) for entry in app.db.entries.find({})]
+        sorted_by_date = sorted(entries_with_date, key=lambda tup: tup[1], reverse=True)
+        return render_template("home.html", entries = sorted_by_date)
     return app
