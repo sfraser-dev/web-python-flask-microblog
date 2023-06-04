@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -7,8 +7,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return """
-    <html><body>
-    <h1>Hello, world!</h1>
-    </body></html>
-    """
+    return render_template("home.html")
