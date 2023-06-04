@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import datetime
 import os
 from pymongo import MongoClient
+import pprint
 
 def create_app():
     load_dotenv()
@@ -18,5 +19,12 @@ def create_app():
         
         entries_with_date = [(entry["content"], entry["date"]) for entry in app.db.entries.find({})]
         sorted_by_date = sorted(entries_with_date, key=lambda tup: tup[1], reverse=True)
+
+        # app.db.entries.delete_one({"content": "hippo"})
+        my_collection = app.db.entries.find().sort("content")
+        for my_doc in my_collection:
+            pprint.pprint(my_doc)
+
         return render_template("home.html", entries = sorted_by_date)
+
     return app
