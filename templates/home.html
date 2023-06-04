@@ -84,6 +84,22 @@
               </div>
             </div>
           </div>
+
+          {% for entry in entries %}
+          <!-- card -->
+          <div class="w3-container w3-margin-top w3-margin-bottom">
+            <div class="w3-card-4">
+              <header class="w3-container w3-blue">
+                <h3>{{ entry[0] | truncate(30, true) }}</h3>
+                <time datetime="{{ entry[1] }}">{{ entry[2] }}</time>
+              </header>
+              <div class="w3-container">
+                <p>{{ entry[0] }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
         </div>
         <!-- right column end -->
 
