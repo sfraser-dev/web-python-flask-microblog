@@ -62,26 +62,16 @@
           <div class="w3-container w3-margin-top w3-margin-bottom">
             <div class="w3-card-4">
               <header class="w3-container w3-blue">
-                <h3>Header</h3>
+                <h4>Header</h4>
               </header>
               <div class="w3-container">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                   labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
                   nisi ut aliquip ex ea commodo consequat.</p>
               </div>
-            </div>
-          </div>
-          <!-- card -->
-          <div class="w3-container w3-margin-top w3-margin-bottom">
-            <div class="w3-card-4">
-              <header class="w3-container w3-blue">
-                <h3>Header</h3>
-              </header>
-              <div class="w3-container">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                  nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
+              <footer class="w3-container w3-blue">
+                <h6>Footer</h6>
+              </footer>
             </div>
           </div>
 
@@ -90,12 +80,14 @@
           <div class="w3-container w3-margin-top w3-margin-bottom">
             <div class="w3-card-4">
               <header class="w3-container w3-blue">
-                <h3>{{ entry[0] | truncate(30, true) }}</h3>
-                <time datetime="{{ entry[1] }}">{{ entry[2] }}</time>
+                <h4>{{ entry[0] | truncate(30, true) }}</h4>
               </header>
               <div class="w3-container">
                 <p>{{ entry[0] }}</p>
               </div>
+              <footer class="w3-container w3-blue">
+                <time datetime="{{ entry[1] }}">{{ entry[2] }}</time>
+              </footer>
             </div>
           </div>
           {% endfor %}
