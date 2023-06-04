@@ -13,15 +13,18 @@ def create_app():
         client = MongoClient(os.getenv("MONGODB_URI"))
         app.db = client.microblog
         if request.method == "POST":
-            if request.form.get("Submit") == "submit":
+            if request.form.get("BlogButtons") == "submit":
                 entry_content = request.form.get("content")
                 formatted_date = datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
                 app.db.entries.insert_one({"content": entry_content, "date": formatted_date})
             
-            else:
+            elif request.form.get("BlogButtons") != "submit":
                 print("\n\n\n\n\n")
-                print(request.form.get("Delete"))
+                print(request.form.get("BlogButtons"))
                 print("\n\n\n\n\n\n\n")
+
+            else:
+                print("error: unknown button")
         
         entries_with_date_and_dbID = [
             (entry["content"], entry["date"], entry["_id"]) for entry in app.db.entries.find({})

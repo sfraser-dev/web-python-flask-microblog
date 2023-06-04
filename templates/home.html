@@ -50,7 +50,7 @@
                 <br>
                 <textarea name="content" id="entry" wrap="hard"></textarea>
               </p>
-              <button type="submit" class="w3-button w3-round w3-blue" name="Submit" value="submit">Submit</button>
+              <button type="submit" class="w3-button w3-round w3-blue" name="BlogButtons" value="submit">Submit</button>
             </form>
           </div>
         </div>
@@ -72,7 +72,7 @@
                 <time datetime="{{ entry[1] }}">{{ entry[1] }}</time>
                 <p>{{ entry[2] }}</p>
                 <form action="#" method="POST">
-                  <button type="submit" class="w3-button w3-round w3-red w3-right" name="Delete" value="{{ entry[2] }}">delete</button>
+                  <button type="submit" class="w3-button w3-round w3-red w3-right" name="BlogButtons" value="{{ entry[2] }}">delete</button>
                 </form>
               </footer>
             </div>
