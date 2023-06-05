@@ -3,11 +3,12 @@ from dotenv import load_dotenv
 import datetime
 import os
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 import pprint
 
 def create_app():
-    load_dotenv()
     app = Flask(__name__)
+    load_dotenv()
     @app.route("/", methods=["GET", "POST"])
     def home():
         client = MongoClient(os.getenv("MONGODB_URI"))
@@ -18,24 +19,18 @@ def create_app():
                 formatted_date = datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
                 app.db.entries.insert_one({"content": entry_content, "date": formatted_date})
             
-            elif request.form.get("BlogButtons") != "submit":
-                print("\n\n\n\n\n")
-                print(request.form.get("BlogButtons"))
-                print("\n\n\n\n\n\n\n")
+            else: # request.form.get("BlogButtons") != "submit":
+                app.db.entries.delete_one({"_id": ObjectId(request.form.get("BlogButtons"))})
 
-            else:
-                print("error: unknown button")
-        
         entries_with_date_and_dbID = [
             (entry["content"], entry["date"], entry["_id"]) for entry in app.db.entries.find({})
         ]
         entries_with_date_and_dbID_sorted = sorted(
             entries_with_date_and_dbID, key=lambda tup: tup[1], reverse=True)
 
-        # app.db.entries.delete_one({"content": "hippo"})
-        my_collection = app.db.entries.find().sort("content")
-        for my_doc in my_collection:
-            pprint.pprint(my_doc)
+        # my_collection = app.db.entries.find().sort("content")
+        # for my_doc in my_collection:
+        #     pprint.pprint(my_doc)
 
         return render_template("home.html", entries = entries_with_date_and_dbID_sorted)
 
