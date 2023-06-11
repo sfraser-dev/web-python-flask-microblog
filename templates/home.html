@@ -18,6 +18,7 @@
       <h1>Microblog <img class="title-image" src="./static/images/write.png" alt="blog logo"></h1>
     </header>
 
+    <!-- navbar -->
     <nav class="w3-bar w3-blue w3-padding w3-round-large">
       <div class="w3-right w3-mobile">
         <a href="https://www.python.org/" class="w3-bar-item w3-button w3-round w3-mobile">Python</a>
@@ -30,7 +31,7 @@
   <!-- row start -->
   <main class="w3-row-padding">
 
-    <!-- left column start -->
+    <!-- left column start: textarea for writing new blog post -->
     <section class="w3-col l6 m6">
       <div class="w3-margin-bottom">
         <p class="w3-xlarge">Add new post</p>
@@ -48,7 +49,7 @@
     </section>
     <!-- left column end -->
 
-    <!-- right column start -->
+    <!-- right column start: cards of blog posts in descending order (deleteable) -->
     <section class="w3-col l6 m6">
       {% for entry in entries %}
       <!-- card -->
