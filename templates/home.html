@@ -57,7 +57,7 @@
       {% for entry in entries %}
       <!-- card -->
       <div class="w3-card-4 w3-theme-d5 w3-round-xlarge">
-        <header class="w3-container w3-round-xlarge">
+        <header class="w3-container">
           <form action="#" method="POST">
             <button type="submit" class="w3-button w3-round w3-theme-d5 w3-hover-red w3-right w3-tiny w3-margin-top"
               name="BlogButtons" value="{{ entry[2] }}">&#10006;</button>
@@ -67,8 +67,8 @@
         <div class="w3-container w3-theme-l4">
           <p>{{ entry[0] }}</p>
         </div>
-        <div class="w3-bar w3-round-xlarge w3-theme-d5">
-          <footer class="w3-bar-item w3-mobile w3-theme-d5">
+        <div class="w3-bar w3-round-xlarge">
+          <footer class="w3-bar-item">
             <time datetime="{{ entry[1] }}">{{ entry[1] }}</time>
           </footer>
         </div>
