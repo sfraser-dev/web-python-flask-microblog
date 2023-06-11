@@ -7,19 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./static/images/favicon.png">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <link rel="stylesheet" href="./static/css/w3.css">
+  <link rel="stylesheet" href="./static/css/w3-deep-purple.css">
   <link rel="stylesheet" href="./static/css/style.css">
 
   <title>Microblog</title>
 </head>
 
-<body>
+<body class="w3-theme-l5">
   <div class="w3-container">
     <header>
       <h1>Microblog <img class="title-image" src="./static/images/write.png" alt="blog logo"></h1>
     </header>
 
     <!-- navbar -->
-    <nav class="w3-bar w3-blue w3-padding w3-round-large">
+    <nav class="w3-bar w3-theme w3-padding w3-round-xlarge">
       <div class="w3-right w3-mobile">
         <a href="https://www.python.org/" class="w3-bar-item w3-button w3-round w3-mobile">Python</a>
         <a href="https://flask.palletsprojects.com/" class="w3-bar-item w3-button w3-round w3-mobile">Flask</a>
@@ -43,7 +46,7 @@
             <br>
             <textarea name="content" id="entry" wrap="hard"></textarea>
           </p>
-          <button type="submit" class="w3-button w3-round w3-blue" name="BlogButtons" value="submit">Submit</button>
+          <button type="submit" class="w3-button w3-round w3-theme-l1" name="BlogButtons" value="submit">Submit</button>
         </form>
       </div>
     </section>
@@ -53,22 +56,25 @@
     <section class="w3-col l6 m6">
       {% for entry in entries %}
       <!-- card -->
-      <div class="w3-card-4">
-        <header class="w3-container w3-blue">
+      <div class="w3-card-4 w3-theme-d5 w3-round-xlarge">
+        <header class="w3-container w3-round-xlarge">
           <form action="#" method="POST">
-            <button type="submit" class="w3-button w3-round w3-blue w3-hover-red w3-right w3-tiny w3-margin-top" name="BlogButtons"
-              value="{{ entry[2] }}">&#10006;</button>
+            <button type="submit" class="w3-button w3-round w3-theme-d5 w3-hover-red w3-right w3-tiny w3-margin-top"
+              name="BlogButtons" value="{{ entry[2] }}">&#10006;</button>
           </form>
           <p class="w3-xlarge">{{ entry[0] | truncate(30, true) }}</p>
         </header>
-        <div class="w3-container">
+        <div class="w3-container w3-theme-l4">
           <p>{{ entry[0] }}</p>
         </div>
-        <footer class="w3-container w3-blue">
-          <time datetime="{{ entry[1] }}">{{ entry[1] }}</time>
-        </footer>
+        <div class="w3-bar w3-round-xlarge w3-theme-d5">
+          <footer class="w3-bar-item w3-mobile w3-theme-d5">
+            <time datetime="{{ entry[1] }}">{{ entry[1] }}</time>
+          </footer>
+        </div>
       </div>
       {% endfor %}
+      <br>
     </section>
     <!-- right column end -->
 
