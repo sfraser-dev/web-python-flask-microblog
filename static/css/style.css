@@ -5,19 +5,18 @@
 }
 
 textarea {
-  width: 100%;
-  height: 150px;
+  width: 80%;
+  height: 160px;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #000000;
-  border-radius: 4px;
   background-color: #ecf1f4;
   font-size: 16px;
   resize: none;
 }
 
-.cursor-pointer {
-  cursor: pointer;
+p {
+  word-wrap: break-word;
 }
 
 /* w3.css uses !important in its themes, so I need to

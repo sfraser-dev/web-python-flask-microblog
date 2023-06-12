@@ -41,10 +41,10 @@
         <form method="POST">
           <p class="w3-large">
             <label for="entry">
-              Entry:
+              Entry (140 characters max):
             </label>
             <br>
-            <textarea name="content" id="entry" wrap="hard"></textarea>
+            <textarea name="content" id="entry" maxlength="140"></textarea>
           </p>
           <button type="submit" class="w3-button w3-theme my-hover-theme-1" name="BlogButtons" value="submit">Submit</button>
         </form>
@@ -61,7 +61,7 @@
         <div class="w3-bar">
           <time class="w3-bar-item w3-small" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
           <form action="#" method="POST">
-            <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right cursor-pointer my-hover-theme-2" name="BlogButtons"
+            <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right my-hover-theme-2" name="BlogButtons"
               value="{{ entry[2] }}">&#10006;</button>
           </form>
         </div>
