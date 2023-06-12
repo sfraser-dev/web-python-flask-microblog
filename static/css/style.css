@@ -1,13 +1,12 @@
 .title-image {
-  width: 25px;
-  height: 25px;
+  width: 45px;
+  height: 45px;
   vertical-align: text-bottom;
 }
 
 textarea {
   width: 80%;
   height: 160px;
-  padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #000000;
   background-color: #e9eef2;
