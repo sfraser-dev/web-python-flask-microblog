@@ -1,6 +1,6 @@
 .title-image {
-  width: 100px;
-  height: 100px;
+  width: 25px;
+  height: 25px;
   vertical-align: text-bottom;
 }
 
@@ -10,7 +10,7 @@ textarea {
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #000000;
-  background-color: #ecf1f4;
+  background-color: #e9eef2;
   font-size: 16px;
   resize: none;
 }
@@ -21,16 +21,8 @@ p {
 
 /* w3.css uses !important in its themes, so I need to
 use it too if I want to over-ride the default hover theme */
-
-/* navbar buttons and blog-post submit button */
-/* buttons have a default hover theme already (black text, gray background, cursor pointer */
-.my-hover-theme-1:hover {   
-  color:#de73da !important;
-  background-color:#341d5b !important;
-}
-
-/* panel close button */
-.my-hover-theme-2:hover {   
+.my-hover-theme:hover {   
   cursor: pointer;
-  color:#de73da !important;
+  color:#d6b4d1 !important;
+  background-color:#341d5b !important;
 }
