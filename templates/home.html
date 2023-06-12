@@ -24,9 +24,9 @@
     <!-- navbar -->
     <nav class="w3-bar w3-theme w3-padding">
       <div class="w3-right w3-mobile">
-        <a href="https://www.python.org/" class="w3-bar-item w3-button w3-mobile">Python</a>
-        <a href="https://flask.palletsprojects.com/" class="w3-bar-item w3-button w3-mobile">Flask</a>
-        <a href="https://www.mongodb.com/" class="w3-bar-item w3-button w3-mobile">MongoDB</a>
+        <a href="https://www.python.org/" class="w3-bar-item w3-button w3-mobile my-hover-theme-1">Python</a>
+        <a href="https://flask.palletsprojects.com/" class="w3-bar-item w3-button w3-mobile my-hover-theme-1">Flask</a>
+        <a href="https://www.mongodb.com/" class="w3-bar-item w3-button w3-mobile my-hover-theme-1">MongoDB</a>
       </div>
     </nav>
   </div>
@@ -46,7 +46,7 @@
             <br>
             <textarea name="content" id="entry" wrap="hard"></textarea>
           </p>
-          <button type="submit" class="w3-button w3-theme" name="BlogButtons" value="submit">Submit</button>
+          <button type="submit" class="w3-button w3-theme my-hover-theme-1" name="BlogButtons" value="submit">Submit</button>
         </form>
       </div>
     </section>
@@ -61,7 +61,7 @@
         <div class="w3-bar">
           <time class="w3-bar-item w3-small" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
           <form action="#" method="POST">
-            <button type="submit" class="delete-btn w3-bar-item w3-theme-d5 w3-tiny w3-right" name="BlogButtons"
+            <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right cursor-pointer my-hover-theme-2" name="BlogButtons"
               value="{{ entry[2] }}">&#10006;</button>
           </form>
         </div>
