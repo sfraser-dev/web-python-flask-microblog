@@ -22,7 +22,7 @@
     </header>
 
     <!-- navbar -->
-    <nav class="w3-bar w3-theme w3-padding w3-round-xlarge">
+    <nav class="w3-bar w3-theme w3-padding w3-round-large">
       <div class="w3-right w3-mobile">
         <a href="https://www.python.org/" class="w3-bar-item w3-button w3-round w3-mobile">Python</a>
         <a href="https://flask.palletsprojects.com/" class="w3-bar-item w3-button w3-round w3-mobile">Flask</a>
@@ -49,28 +49,39 @@
           <button type="submit" class="w3-button w3-round w3-theme-l1" name="BlogButtons" value="submit">Submit</button>
         </form>
       </div>
+
+      <div class="w3-card-4">
+        <p>
+        This gives a simple card with rounded corners
+        <br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet soluta sunt incidunt nemo deleniti cum
+        necessitatibus adipisci quo ab omnis. Explicabo corporis quisquam soluta sequi! Molestias esse laboriosam
+        possimus animi!
+        </p>
+      </div>
+      <div class="w3-card w3-panel">
+        <p>w3-card</p>
+      </div>
+
     </section>
     <!-- left column end -->
 
-    <!-- right column start: cards of blog posts in descending order (deleteable) -->
+    <!-- right column start: cards of deleteable blog posts in descending order -->
     <section class="w3-col l6 m6">
       {% for entry in entries %}
       <!-- card -->
-      <div class="w3-card-4 w3-theme-d5 w3-round-xlarge">
-        <header class="w3-container">
+      <div class="w3-card w3-theme-d5">
+        <!-- header -->
+        <div class="w3-bar">
+          <time class="w3-bar-item w3-small" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
           <form action="#" method="POST">
-            <button type="submit" class="w3-button w3-round w3-theme-d5 w3-hover-red w3-right w3-tiny w3-margin-top"
-              name="BlogButtons" value="{{ entry[2] }}">&#10006;</button>
+            <button type="submit" class="delete-btn w3-bar-item w3-theme-d5 w3-tiny w3-right" name="BlogButtons"
+              value="{{ entry[2] }}">&#10006;</button>
           </form>
-          <p class="w3-xlarge">{{ entry[0] | truncate(30, true) }}</p>
-        </header>
+        </div>
+        <!-- body -->
         <div class="w3-container w3-theme-l4">
           <p>{{ entry[0] }}</p>
-        </div>
-        <div class="w3-bar w3-round-xlarge">
-          <footer class="w3-bar-item">
-            <time datetime="{{ entry[1] }}">{{ entry[1] }}</time>
-          </footer>
         </div>
       </div>
       {% endfor %}
