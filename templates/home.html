@@ -22,19 +22,17 @@
 
       <!-- left column start: textarea for writing new blog post -->
       <section class="w3-col l6 m6">
-        <div class="w3-margin-bottom">
-          <form method="POST">
-            <p>
-              <label for="entry">
-                <img class="title-image" src="./static/images/write.png" alt="blog logo">
-              </label>
-              <br>
-              <textarea name="content" id="entry" maxlength="140" placeholder="new post..."></textarea>
-            </p>
+        <form method="POST">
+          <p>
+            <label for="entry">
+              <img class="title-image" src="./static/images/write.png" alt="blog logo">
+            </label>
+            <br>
+            <textarea name="content" id="entry" maxlength="140" placeholder="new post..."></textarea>
             <button type="submit" class="w3-button w3-theme my-hover-theme" name="BlogButtons"
               value="submit">Submit</button>
-          </form>
-        </div>
+          </p>
+        </form>
       </section>
       <!-- left column end -->
 
@@ -53,7 +51,7 @@
           </div>
           <!-- body -->
           <div class="w3-container w3-theme-l3">
-            <p>{{ entry[0] }}</p>
+            <p class="p-body-historical-posts">{{ entry[0] }}</p>
           </div>
         </div>
         {% endfor %}

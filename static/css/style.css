@@ -1,9 +1,3 @@
-.title-image {
-  width: 45px;
-  height: 45px;
-  vertical-align: text-bottom;
-}
-
 textarea {
   width: 80%;
   height: 160px;
@@ -14,12 +8,19 @@ textarea {
   resize: none;
 }
 
-p {
+.title-image {
+  width: 45px;
+  height: 45px;
+  vertical-align: text-bottom;
+  margin-bottom: 3px;
+}
+
+.p-body-historical-posts  {
   word-wrap: break-word;
 }
 
-/* w3.css uses !important in its themes, so I need to
-use it too if I want to over-ride the default hover theme */
+/* w3.css uses !important in its themes, so I need to use
+it too if I want to over-ride the default w3.css hover theme */
 .my-hover-theme:hover {   
   cursor: pointer;
   color:#d6b4d1 !important;
