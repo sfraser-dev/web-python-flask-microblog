@@ -45,7 +45,7 @@ def create_app():
         #     pprint.pprint(my_doc)
 
         # Return to user the jinja templated "home.html". 
-        return render_template("home.html", entries = entries_with_date_and_dbID_sorted)
+        return render_template("home.html/", entries = entries_with_date_and_dbID_sorted)
 
     # App factory return.
     return app

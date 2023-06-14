@@ -15,54 +15,73 @@
   <title>Microblog</title>
 </head>
 
-<body class="w3-theme-l4">
+<body class="w3-theme-l5">
   <div class="w3-container">
-    <!-- row start -->
-    <main class="w3-row-padding">
+    <header>
+      <h1><img class="title-image" src="./static/images/write.png" alt="blog logo"> Microblog</h1>
+    </header>
 
-      <!-- left column start: textarea for writing new blog post -->
-      <section class="w3-col l6 m6">
-        <form method="POST">
-          <p>
-            <label for="entry">
-              <img class="title-image" src="./static/images/write.png" alt="blog logo">
-            </label>
-            <br>
-            <textarea name="content" id="entry" maxlength="140" placeholder="new post..."></textarea>
-            <br>
-            <button type="submit" class="w3-button w3-theme my-hover-theme" name="BlogButtons"
-              value="submit">Submit</button>
-          </p>
-        </form>
-      </section>
-      <!-- left column end -->
-
-      <!-- right column start: cards of deleteable blog posts in descending order -->
-      <section class="w3-col l6 m6">
-        {% for entry in entries %}
-        <!-- card -->
-        <div class="w3-card w3-theme-d5 w3-margin-top">
-          <!-- header -->
-          <div class="w3-bar">
-            <time class="w3-bar-item w3-small" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
-            <form action="#" method="POST">
-              <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right my-hover-theme" name="BlogButtons"
-                value="{{ entry[2] }}">&#10006;</button>
-            </form>
-          </div>
-          <!-- body -->
-          <div class="w3-container w3-theme-l3">
-            <p class="p-body-historical-posts">{{ entry[0] }}</p>
-          </div>
-        </div>
-        {% endfor %}
-        <br>
-      </section>
-      <!-- right column end -->
-
-    </main>
-    <!-- row end -->
+    <!-- navbar -->
+    <nav class="w3-bar w3-theme w3-padding">
+      <div class="w3-mobile">
+        <a href="https://www.w3schools.com/w3css/" class="w3-bar-item w3-button w3-mobile my-hover-theme">W3.CSS</a>
+        <a href="https://www.python.org/" class="w3-bar-item w3-button w3-mobile my-hover-theme">Python</a>
+        <a href="https://flask.palletsprojects.com/" class="w3-bar-item w3-button w3-mobile my-hover-theme">Flask</a>
+        <a href="https://www.mongodb.com/" class="w3-bar-item w3-button w3-mobile my-hover-theme">MongoDB</a>
+      </div>
+    </nav>
   </div>
+
+  <!-- row start -->
+  <main class="w3-row-padding">
+
+    <!-- left column start: textarea for writing new blog post -->
+    <section class="w3-col l6 m6">
+      <form method="POST" id="blog">
+        <p>
+          <textarea name="content" id="entry" maxlength="140" placeholder="new post..."></textarea>
+          <br>
+          <button type="submit" class="w3-button w3-theme my-hover-theme" name="BlogButtons"
+            value="submit">Submit</button>
+        </p>
+      </form>
+    </section>
+    <!-- left column end -->
+
+    <!-- right column start: cards of deleteable blog posts in descending order -->
+    <section class="w3-col l6 m6">
+      {% for entry in entries %}
+      <!-- card -->
+      <div class="w3-card w3-theme-d5 w3-margin-top">
+        <!-- header -->
+        <div class="w3-bar">
+          <time class="w3-bar-item w3-small" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
+          <form action="#" method="POST">
+            <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right my-hover-theme-card"
+              name="BlogButtons" value="{{ entry[2] }}">&#10006;</button>
+          </form>
+        </div>
+        <!-- body -->
+        <div class="w3-container w3-theme-l3">
+          <p class="p-body-historical-posts">{{ entry[0] }}</p>
+        </div>
+      </div>
+      {% endfor %}
+      <br>
+    </section>
+    <!-- right column end -->
+
+  </main>
+  <!-- row end -->
+  <script>
+    // document.getElementById("blog").scrollIntoView({ behavior: 'smooth' });
+    if (navigator.userAgent.match(/Chrome|AppleWebKit/)) {
+      window.location.href = "#blog";
+      window.location.href = "#blog";  /* these take twice */
+    } else {
+      window.location.hash = "blog";
+    }
+  </script>
 </body>
 
 </html>
