@@ -58,6 +58,8 @@
   color: red !important;
 }
 
+/* quite a few media queries for nice textarea
+size  to hold 140 characters max */
 @media only screen and (min-width: 451px) {
   .blog-post-textarea  {
     height: 140px;
@@ -105,7 +107,9 @@
     height: 8px;
     margin: 8px 0px; 
   }
+  /* after w3css large, fix the textarea size */
   .blog-post-textarea  {
-    height: 150px;
+    height: 170px;
+    width: 450px;
   }
 }
