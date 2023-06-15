@@ -18,18 +18,10 @@
 <body class="w3-theme-l5">
   <div class="w3-container">
     <header>
-      <h1><img class="title-image" src="./static/images/write.png" alt="blog logo"> Microblog</h1>
+      <h1 class="header"><img class="title-image" src="./static/images/write.png" alt="blog logo"> Microblog</h1>
     </header>
 
-    <!-- navbar -->
-    <nav class="w3-bar w3-theme w3-padding">
-      <div class="w3-mobile">
-        <a href="https://www.w3schools.com/w3css/" class="w3-bar-item w3-button w3-mobile my-hover-theme">W3.CSS</a>
-        <a href="https://www.python.org/" class="w3-bar-item w3-button w3-mobile my-hover-theme">Python</a>
-        <a href="https://flask.palletsprojects.com/" class="w3-bar-item w3-button w3-mobile my-hover-theme">Flask</a>
-        <a href="https://www.mongodb.com/" class="w3-bar-item w3-button w3-mobile my-hover-theme">MongoDB</a>
-      </div>
-    </nav>
+    <hr class="horizontal-rule">
   </div>
 
   <!-- row start -->
@@ -39,9 +31,9 @@
     <section class="w3-col l6 m6">
       <form method="POST" id="blog">
         <p>
-          <textarea name="content" id="entry" maxlength="140" placeholder="new post..."></textarea>
+          <textarea id="entry" class="blog-post-textarea" name="content" maxlength="140" placeholder="new post..."></textarea>
           <br>
-          <button type="submit" class="w3-button w3-theme my-hover-theme" name="BlogButtons"
+          <button type="submit" class="submit-button" name="BlogButtons"
             value="submit">Submit</button>
         </p>
       </form>
@@ -57,7 +49,7 @@
         <div class="w3-bar">
           <time class="w3-bar-item w3-small" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
           <form action="#" method="POST">
-            <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right my-hover-theme-card"
+            <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right card-x-button"
               name="BlogButtons" value="{{ entry[2] }}">&#10006;</button>
           </form>
         </div>
