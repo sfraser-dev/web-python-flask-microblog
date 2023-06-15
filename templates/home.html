@@ -31,7 +31,7 @@
     <section class="w3-col l6 m6">
       <form method="POST" id="blog">
         <p>
-          <textarea id="entry" class="blog-post-textarea" name="content" maxlength="140" placeholder="new post (140 chars max)..."></textarea>
+          <textarea id="entry" class="blog-post-textarea" name="content" maxlength="140" placeholder="new post (max 140 chars)..."></textarea>
           <br>
           <button type="submit" class="submit-button" name="BlogButtons"
             value="submit">Submit</button>
@@ -65,15 +65,7 @@
 
   </main>
   <!-- row end -->
-  <script>
-    // document.getElementById("blog").scrollIntoView({ behavior: 'smooth' });
-    if (navigator.userAgent.match(/Chrome|AppleWebKit/)) {
-      window.location.href = "#blog";
-      window.location.href = "#blog";  /* these take twice */
-    } else {
-      window.location.hash = "blog";
-    }
-  </script>
+
 </body>
 
 </html>
