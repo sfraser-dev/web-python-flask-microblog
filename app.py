@@ -16,8 +16,10 @@ def create_app():
     # Main endpoint decorator.
     @app.route("/", methods=["GET", "POST"])
     def home():
-        # Connect our app to the DB.
-        client = MongoClient(os.getenv("MONGODB_URI"))
+        # Connect app to the DB.
+        # client = MongoClient(os.getenv("MONGODB_URI"))
+        # It's a test MongoDB Atlas account so this is ok.
+        client = MongoClient("mongodb+srv://mong-rabbit:NCO02Xj4IsUnBAKt@jack-rabbit.u44ibnh.mongodb.net/")
         app.db = client.microblog
         # Handle POST request.
         # Two submit buttons on the page (submit & delete) so need to distinguish between
