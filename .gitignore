@@ -4,6 +4,8 @@
 ### Mine ###
 *.zip
 *.7z
+*.swp
+refresh-info.txt
 
 ### Flask ###
 instance/*

@@ -19,6 +19,8 @@
   <div class="w3-container">
     <header>
       <h1 class="header"><img class="title-image" src="./static/images/write.png" alt="blog logo"> Microblog</h1>
+      <a href="https://sfraser-microblog.onrender.com">Refresh</a>
+      <a href="https://sfraser.onrender.com">SFraser</a>
     </header>
 
     <hr class="horizontal-rule">
@@ -31,10 +33,10 @@
     <section class="w3-col l6 m6">
       <form method="POST" id="blog">
         <p>
-          <textarea id="entry" class="blog-post-textarea" name="content" maxlength="140" placeholder="new post (max 140 chars)..."></textarea>
+          <textarea id="entry" class="blog-post-textarea" name="content" maxlength="140"
+            placeholder="new post (max 140 chars)..."></textarea>
           <br>
-          <button type="submit" class="submit-button" name="BlogButtons"
-            value="submit">Submit</button>
+          <button type="submit" class="submit-button" name="BlogButtons" value="submit">Submit</button>
         </p>
       </form>
     </section>
@@ -49,8 +51,8 @@
         <div class="w3-bar">
           <time class="w3-bar-item w3-small" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
           <form action="#" method="POST">
-            <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right card-x-button"
-              name="BlogButtons" value="{{ entry[2] }}">&#10006;</button>
+            <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right card-x-button" name="BlogButtons"
+              value="{{ entry[2] }}">&#10006;</button>
           </form>
         </div>
         <!-- body -->

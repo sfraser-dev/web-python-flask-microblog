@@ -8,7 +8,9 @@ import pprint
 
 # Create a flask app factory via "create_app()".
 # This creates apps rather than just hard-coding app in the main file ("app.py").
-# This prevents issue when working with databases.
+# This prevents possible issue when deploying, sometimes this file will get run..
+# ..multiple times when deploying, but the deploying mechanism will be smart ..
+# ..enough to only create one app (thanks to the flask app factory).
 def create_app():
     # Our flask app.
     app = Flask(__name__)
