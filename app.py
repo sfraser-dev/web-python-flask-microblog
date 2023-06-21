@@ -42,6 +42,7 @@ def create_app():
         entries_with_date_and_dbID_sorted = sorted(
             entries_with_date_and_dbID, key=lambda tup: tup[1], reverse=True)
 
+        # Print to screen.
         # my_collection = app.db.entries.find().sort("content")
         # for my_doc in my_collection:
         #     pprint.pprint(my_doc)
