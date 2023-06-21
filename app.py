@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
-import datetime
+from datetime import datetime, timezone, timedelta
 import os
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -27,7 +27,7 @@ def create_app():
         if request.method == "POST":
             if request.form.get("BlogButtons") == "submit":
                 entry_content = request.form.get("content")
-                formatted_date = datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+                formatted_date = (datetime.now(timezone.utc)+timedelta(minutes=60)).strftime("%Y-%m-%d %H:%M:%S")
                 app.db.entries.insert_one({"content": entry_content, "date": formatted_date})
             
             else: # request.form.get("BlogButtons") != "submit":
