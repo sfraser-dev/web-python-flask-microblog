@@ -59,8 +59,12 @@
   color: red !important;
 }
 
+.limit-width {
+  max-width: 701px;
+}
+
 /* quite a few media queries for nice textarea
-size  to hold 140 characters max */
+size to hold 140 characters max */
 @media only screen and (min-width: 401px) {
   .blog-post-textarea  {
     height: 200px;
@@ -93,36 +97,5 @@ size  to hold 140 characters max */
 @media only screen and (min-width: 701px) {
   .blog-post-textarea  {
     height: 220px;
-  }
-}
-
-@media only screen and (min-width: 801px) {
-  .blog-post-textarea  {
-    height: 200px;
-  }
-}
-
-@media only screen and (min-width: 901px) {
-  .blog-post-textarea  {
-    height: 180px;
-  }
-}
-
-@media only screen and (min-width: 993px) {
-  .title-image {
-    height: 55px;
-    width: 55px;
-  }
-  .header {
-    font-size: 45px;
-  }
-  .horizontal-rule {
-    height: 8px;
-    margin: 8px 0px; 
-  }
-  /* after w3css large, fix the textarea size */
-  .blog-post-textarea  {
-    height: 180px;
-    width: 450px;
   }
 }

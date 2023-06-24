@@ -6,6 +6,7 @@
 *.7z
 *.swp
 refresh-info.txt
+.vscode/
 
 ### Flask ###
 instance/*
