@@ -25,8 +25,8 @@
 }
 
 .blog-post-textarea  {
+  /* mobile-first design */
   width: 100%;
-  /* mobile first design for 340px width resolution */
   height: 240px;
   box-sizing: border-box;
   border: 2px solid var(--my-border-color);
@@ -59,8 +59,13 @@
   color: red !important;
 }
 
-.limit-width {
-  max-width: 701px;
+/* mobile-first design, body-limit-width limited to 700px max */
+/* w3css of w3-col l6 m6 s12 so max two columns at 601px,
+   and it'll then hit max-width of 700px soon after */
+/* device emulator: works fine with JioPhone2-240px and 
+   GalaxyFold-280px, looks good on iPhone4-320px */
+.body-limit-width {
+  max-width: 700px;
 }
 
 /* quite a few media queries for nice textarea

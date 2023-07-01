@@ -15,7 +15,7 @@
   <title>Microblog</title>
 </head>
 
-<body class="w3-theme-l5 limit-width">
+<body class="w3-theme-l5 body-limit-width">
   <div class="w3-container">
     <header>
       <h1 class="header"><img class="title-image" src="./static/images/write.png" alt="blog logo"> Microblog</h1>
@@ -28,7 +28,8 @@
   <main class="w3-row-padding">
 
     <!-- left column start: textarea for writing new blog post -->
-    <section class="w3-col l6 m6">
+    <!-- the body HTML is width limited to 700px -->
+    <section class="w3-col l6 m6 s12">
       <form method="POST" id="blog">
         <p>
           <textarea id="entry" class="blog-post-textarea" name="content" maxlength="140"
@@ -41,7 +42,8 @@
     <!-- left column end -->
 
     <!-- right column start: cards of deleteable blog posts in descending order -->
-    <section class="w3-col l6 m6">
+    <!-- the body HTML is width limited to 700px -->
+    <section class="w3-col l6 m6 s12">
       {% for entry in entries %}
       <!-- card -->
       <div class="w3-card w3-theme-d5 w3-margin-top">
