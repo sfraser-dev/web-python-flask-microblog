@@ -1,5 +1,5 @@
 ## Microbloging site
-#### Front end of HTML & W3.CSS, back end of Python, flask & MongoDB
+#### Front end of HTML & W3.CSS, back end of Python, Flask & MongoDB
 
 Maximum of 140 characters per post.  
 
