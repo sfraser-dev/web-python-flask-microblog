@@ -5,6 +5,8 @@ import os
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import pprint
+from flask_wtf import CSRFProtect
+
 
 # Create a flask app factory via "create_app()".
 # This creates apps rather than just hard-coding app in the main file ("app.py").
@@ -14,13 +16,18 @@ import pprint
 def create_app():
     # Our flask app.
     app = Flask(__name__)
+    # Load env vars.
     load_dotenv()
+    # CSRF protection.
+    app.secret_key = os.getenv("SECRET_KEY", "insecure-default-key")  # Use env var in production
+    CSRFProtect(app)
+    # Connect app to the DB.
+    client = MongoClient(os.getenv("MONGODB_URI"))
+    app.db = client[os.getenv("DB_NAME")]
     # Main endpoint decorator.
     @app.route("/", methods=["GET", "POST"])
     def home():
-        # Connect app to the DB.
-        client = MongoClient(os.getenv("MONGODB_URI"))
-        app.db = client.microblog
+        db = app.db
         # Handle POST request.
         # Two submit buttons on the page (submit & delete) so need to distinguish between
         # them, gave both submit buttons the same name but different values.
@@ -28,14 +35,14 @@ def create_app():
             if request.form.get("BlogButtons") == "submit":
                 entry_content = request.form.get("content")
                 formatted_date = (datetime.now(timezone.utc)+timedelta(minutes=60)).strftime("%Y-%m-%d %H:%M:%S")
-                app.db.entries.insert_one({"content": entry_content, "date": formatted_date})
+                db.entries.insert_one({"content": entry_content, "date": formatted_date})
             
             else: # request.form.get("BlogButtons") != "submit":
-                app.db.entries.delete_one({"_id": ObjectId(request.form.get("BlogButtons"))})
+                db.entries.delete_one({"_id": ObjectId(request.form.get("BlogButtons"))})
 
         # Retrieve a list of tuples via list comprehension of the DB entries.
         entries_with_date_and_dbID = [
-            (entry["content"], entry["date"], entry["_id"]) for entry in app.db.entries.find({})
+            (entry["content"], entry["date"], entry["_id"]) for entry in db.entries.find({})
         ]
 
         # Sort this list via date in descending order.
@@ -43,7 +50,7 @@ def create_app():
             entries_with_date_and_dbID, key=lambda tup: tup[1], reverse=True)
 
         # Print to screen.
-        # my_collection = app.db.entries.find().sort("content")
+        # my_collection = db.entries.find().sort("content")
         # for my_doc in my_collection:
         #     pprint.pprint(my_doc)
 

@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD007 -->
 # Microbloging Site
 
 - Front end of HTML & W3.CSS, back end of Python, Flask and MongoDB
@@ -21,4 +22,3 @@ Remember to add your computer's IP to the allowable IPlist if you have network r
 - `source ./.venv/bin/activate`
 - `pip install -r requirements.txt`
 - `python -m flask run`
-

@@ -30,6 +30,7 @@
     <!-- the body HTML is width limited to 700px -->
     <section class="w3-col l6 m6 s12">
       <form method="POST" id="blog">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <p>
           <textarea id="entry" class="blog-post-textarea" name="content" maxlength="140"
             placeholder="new post (max 140 chars)..."></textarea>
@@ -50,6 +51,7 @@
         <div class="w3-bar">
           <time class="w3-bar-item w3-small" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
           <form action="#" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right card-x-button" name="BlogButtons"
               value="{{ entry[2] }}">&#10006;</button>
           </form>
