@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./static/images/favicon.png">
+  <link rel="icon" href="./static/images/write-notes.png">
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="./static/css/w3-deep-purple.css">
@@ -14,59 +14,70 @@
   <title>Microblog</title>
 </head>
 
-<body class="w3-theme-l5 body-limit-width">
-  <div class="w3-container">
-    <header>
-      <h1 class="header"><img class="title-image" src="./static/images/write.png" alt="blog logo"> Microblog</h1>
-    </header>
+<body class="w3-theme-l5">
+  <div class="body-limit-width">
+    <div class="w3-container">
+      <header>
+        <h1 class="header"><img class="title-image" src="./static/images/write.png" alt="blog logo"> Microblog</h1>
+      </header>
 
-    <hr class="horizontal-rule">
+      <hr class="horizontal-rule">
+    </div>
+    <!-- Flash message about posts requiring 1 <= chars <= 140 -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="w3-panel w3-pale-red w3-border w3-border-red w3-round w3-margin">
+          {% for message in messages %}
+            <p class="w3-small">{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- row start -->
+    <main class="w3-row-padding">
+
+      <!-- left column start: textarea for writing new blog post -->
+      <!-- the body HTML is width limited to 700px -->
+      <section class="w3-col l6 m6 s12">
+        <form method="POST" id="blog">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <p>
+            <textarea id="entry" class="blog-post-textarea" name="content" maxlength="140"
+              placeholder="new post (max 140 chars)..."></textarea>
+            <br>
+            <button type="submit" class="submit-button" name="BlogButtons" value="submit">Submit</button>
+          </p>
+        </form>
+      </section>
+      <!-- left column end -->
+
+      <!-- right column start: cards of deleteable blog posts in descending order -->
+      <!-- the body HTML is width limited to 700px -->
+      <section class="w3-col l6 m6 s12">
+        {% for entry in entries %}
+        <!-- card -->
+        <div class="w3-card w3-theme-d5 w3-margin-top">
+          <!-- header -->
+          <div class="w3-bar">
+            <time class="w3-bar-item title-historical-posts" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
+            <form action="#" method="POST">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+              <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right card-x-button" name="BlogButtons"
+                value="{{ entry[2] }}">&#10006;</button>
+            </form>
+          </div>
+          <!-- body -->
+          <div class="w3-container w3-theme-l3">
+            <p class="p-body-historical-posts">{{ entry[0] }}</p>
+          </div>
+        </div>
+        {% endfor %}
+        <br>
+      </section>
+      <!-- right column end -->
+    </main>
   </div>
-
-  <!-- row start -->
-  <main class="w3-row-padding">
-
-    <!-- left column start: textarea for writing new blog post -->
-    <!-- the body HTML is width limited to 700px -->
-    <section class="w3-col l6 m6 s12">
-      <form method="POST" id="blog">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <p>
-          <textarea id="entry" class="blog-post-textarea" name="content" maxlength="140"
-            placeholder="new post (max 140 chars)..."></textarea>
-          <br>
-          <button type="submit" class="submit-button" name="BlogButtons" value="submit">Submit</button>
-        </p>
-      </form>
-    </section>
-    <!-- left column end -->
-
-    <!-- right column start: cards of deleteable blog posts in descending order -->
-    <!-- the body HTML is width limited to 700px -->
-    <section class="w3-col l6 m6 s12">
-      {% for entry in entries %}
-      <!-- card -->
-      <div class="w3-card w3-theme-d5 w3-margin-top">
-        <!-- header -->
-        <div class="w3-bar">
-          <time class="w3-bar-item w3-small" datetime="{{ entry[1] }}">{{ entry[1] }}</time>
-          <form action="#" method="POST">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button type="submit" class="w3-bar-item w3-theme-d5 w3-tiny w3-right card-x-button" name="BlogButtons"
-              value="{{ entry[2] }}">&#10006;</button>
-          </form>
-        </div>
-        <!-- body -->
-        <div class="w3-container w3-theme-l3">
-          <p class="p-body-historical-posts">{{ entry[0] }}</p>
-        </div>
-      </div>
-      {% endfor %}
-      <br>
-    </section>
-    <!-- right column end -->
-
-  </main>
   <!-- row end -->
 
 </body>

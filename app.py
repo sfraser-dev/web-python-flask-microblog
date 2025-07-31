@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from dotenv import load_dotenv
 from datetime import datetime, timezone, timedelta
 import os
@@ -7,11 +7,8 @@ from bson.objectid import ObjectId
 from flask_wtf import CSRFProtect
 
 
-# Create a flask app factory via "create_app()".
-# This creates apps rather than just hard-coding app in the main file ("app.py").
-# This prevents possible issue when deploying, sometimes this file will get run..
-# ..multiple times when deploying, but the deploying mechanism will be smart ..
-# ..enough to only create one app (thanks to the flask app factory).
+# Create a flask app factory via "create_app()". This creates apps rather than just hard-coding app in the main file ("app.py").
+# This prevents possible issue when deploying, sometimes this file will get run multiple times when deploying, but the deploying mechanism will be smart enough to only create one app (thanks to the flask app factory).
 def create_app():
     # Our flask app.
     app = Flask(__name__)
@@ -38,7 +35,9 @@ def create_app():
                 if 0 < len(entry_content) <= 140:
                     formatted_date = (datetime.now(timezone.utc)+timedelta(minutes=60)).strftime("%Y-%m-%d %H:%M:%S")
                     db.entries.insert_one({"content": entry_content, "date": formatted_date})
-            
+                else:
+                    # Flash message that post must be: 1 <= chars <= 140.
+                    flash("Post must be between 1 and 140 characters.")
             else: # request.form.get("BlogButtons") != "submit":
                 db.entries.delete_one({"_id": ObjectId(request.form.get("BlogButtons"))})
 

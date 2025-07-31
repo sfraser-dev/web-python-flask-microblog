@@ -6,16 +6,24 @@
   --my-border-color: black;
 }
 
+html {
+  font-size: 12px;
+}
+
+body {
+  font-size: 0.875rem;
+}
+
 .title-image {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   vertical-align: text-bottom;
   margin-bottom: 2px;
   margin-top: 2px;
 }
 
 .header {
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 .horizontal-rule {
@@ -31,7 +39,6 @@
   box-sizing: border-box;
   border: 2px solid var(--my-border-color);
   background-color: #e9eef2;
-  font-size: 16px;
   resize: none;
 }
 
@@ -39,13 +46,13 @@
   word-wrap: break-word;
 }
 
+
 /* not using w3.css buttons, so don't need !important to override */
 .submit-button {
   border-color: var(--my-border-color);
   border-style: solid;
   background-color: var(--w3css-deep-purple-l3-bg); 
   color: var(--w3css-deep-purple-d3-bg);
-  font-size: 12px;  
 }
 
 .submit-button:hover {   
@@ -59,6 +66,10 @@
   color: red !important;
 }
 
+.blog-post-textarea, .p-body-historical-posts, .title-historical-posts, .submit-button {
+  font-size: 0.7rem;
+}
+
 /* mobile-first design, body-limit-width limited to 700px max */
 /* w3css of w3-col l6 m6 s12 so max two columns at 601px,
    and it'll then hit max-width of 700px soon after */
@@ -70,9 +81,44 @@
 
 /* quite a few media queries for nice textarea
 size to hold 140 characters max */
-@media only screen and (min-width: 401px) {
+@media only screen and (min-width: 281px) {
+  .blog-post-textarea  {
+    height: 220px;
+  }
+  .submit-button, .blog-post-textarea, .p-body-historical-posts, .title-historical-posts, #body {
+    font-size: 0.9rem;
+  }
+  .title-image {
+    width: 35px;
+    height: 35px;
+  }
+  .header {
+    font-size: 2.85rem;
+  }
+}
+
+@media only screen and (min-width: 331px) {
   .blog-post-textarea  {
     height: 200px;
+  }
+  .submit-button, .blog-post-textarea, .p-body-historical-posts, .title-historical-posts, #body {
+    font-size: 1rem;
+  }
+  .title-image {
+    width: 40px;
+    height: 40px;
+  }
+  .header {
+    font-size: 3.05rem;
+  }
+}
+
+@media only screen and (min-width: 401px) {
+  .blog-post-textarea  {
+    height: 180px;
+  }
+  .submit-button, .blog-post-textarea, .p-body-historical-posts, .title-historical-posts, #body {
+    font-size: 1.1rem;
   }
 }
 
@@ -87,15 +133,15 @@ size to hold 140 characters max */
     height: 45px;
     width: 45px;
   }
-  .header {
-    font-size: 35px;
-  }
   .horizontal-rule {
     height: 6px;
     margin: 6px 0px; 
   }
   .blog-post-textarea  {
     height: 250px;
+  }
+  .header {
+    font-size: 3.25rem;
   }
 }
 
