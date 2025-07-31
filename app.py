@@ -4,7 +4,6 @@ from datetime import datetime, timezone, timedelta
 import os
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-import pprint
 from flask_wtf import CSRFProtect
 
 
@@ -33,9 +32,12 @@ def create_app():
         # them, gave both submit buttons the same name but different values.
         if request.method == "POST":
             if request.form.get("BlogButtons") == "submit":
-                entry_content = request.form.get("content")
-                formatted_date = (datetime.now(timezone.utc)+timedelta(minutes=60)).strftime("%Y-%m-%d %H:%M:%S")
-                db.entries.insert_one({"content": entry_content, "date": formatted_date})
+                # Sanitise entries, no empty or white space only posts.
+                entry_content = request.form.get("content", "").strip()
+                # Server side enforcing of max message length.
+                if 0 < len(entry_content) <= 140:
+                    formatted_date = (datetime.now(timezone.utc)+timedelta(minutes=60)).strftime("%Y-%m-%d %H:%M:%S")
+                    db.entries.insert_one({"content": entry_content, "date": formatted_date})
             
             else: # request.form.get("BlogButtons") != "submit":
                 db.entries.delete_one({"_id": ObjectId(request.form.get("BlogButtons"))})
@@ -48,11 +50,6 @@ def create_app():
         # Sort this list via date in descending order.
         entries_with_date_and_dbID_sorted = sorted(
             entries_with_date_and_dbID, key=lambda tup: tup[1], reverse=True)
-
-        # Print to screen.
-        # my_collection = db.entries.find().sort("content")
-        # for my_doc in my_collection:
-        #     pprint.pprint(my_doc)
 
         # Return to user the jinja templated "home.html". 
         return render_template("home.html", entries = entries_with_date_and_dbID_sorted)
